@@ -1,0 +1,20 @@
+.choice-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .choice-card h2 {
+    margin-bottom: 10px;
+  }
+  
+  .player-info p {
+    margin: 5px 0;
+  }
+  
+  .record p {
+    margin: 5px 0;
+  }
+  
