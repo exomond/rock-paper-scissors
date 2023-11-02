@@ -33,7 +33,7 @@ const UserForm = ({ onSubmitUserInfo }) => {
             required
           />
         </div>
-        <button type="submit">Let's Go</button>
+        <button type="submit">Let's Play</button>
       </form>
     </div>
   );
