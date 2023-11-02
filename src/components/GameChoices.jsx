@@ -3,7 +3,7 @@ import "./GameChoices.css"; // Make sure to create a corresponding CSS file for 
 import paperImage from "../assets/paper.png";
 import rockImage from "../assets/rock.png";
 import scissorsImage from "../assets/scissors.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ResultOverlay from "./ResultOverlay.jsx";
 
 const GameChoices = ({ playerName, playerCity }) => {
@@ -60,12 +60,12 @@ const GameChoices = ({ playerName, playerCity }) => {
   const [lastResult, setLastResult] = useState({ user: "", computer: "" });
 
   // Function to handle user's choice and computer's random choice
-  const playGame = (userChoice) => {
+  const playGame = useCallback((userChoice) => {
     setPlayerLastChoice(userChoice); // Update the last choice
     const choices = ["rock", "paper", "scissors"];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
     updateScores(userChoice, computerChoice);
-  };
+}, []); // Dependencies array is empty if no props or state are used
 
   // Function to compare choices and update scores
   const updateScores = (userChoice, computerChoice) => {
@@ -84,30 +84,28 @@ const GameChoices = ({ playerName, playerCity }) => {
 
     // Update user game records based on the result
     setGameRecords((prevRecords) => {
-      const newRecords = { ...prevRecords };
-      if (userResult === "win") {
-        newRecords[userChoice].wins += 1;
-      } else if (userResult === "loss") {
-        newRecords[userChoice].losses += 1;
-      } else if (userResult === "tie") {
-        newRecords[userChoice].ties += 1;
-      }
-      return newRecords;
+      return {
+        ...prevRecords,
+        [userChoice]: {
+          ...prevRecords[userChoice],
+          wins: userResult === "win" ? prevRecords[userChoice].wins + 1 : prevRecords[userChoice].wins,
+          losses: userResult === "loss" ? prevRecords[userChoice].losses + 1 : prevRecords[userChoice].losses,
+          ties: userResult === "tie" ? prevRecords[userChoice].ties + 1 : prevRecords[userChoice].ties,
+        },
+      };
     });
 
     // Update computer game records based on the result
     setComputerRecords((prevRecords) => {
-      const newRecords = { ...prevRecords };
-      if (computerResult === "win") {
-        newRecords[computerChoice].wins += 1;
-      } else if (computerResult === "loss") {
-        newRecords[computerChoice].losses += 1;
-      } else if (computerResult === "tie") {
-        // Normally we wouldn't need to update anything for a tie, but we're including it for completeness
-        newRecords[computerChoice].ties += 1;
-      }
-
-      return newRecords;
+      return {
+        ...prevRecords,
+        [computerChoice]: {
+          ...prevRecords[computerChoice],
+          wins: computerResult === "win" ? prevRecords[computerChoice].wins + 1 : prevRecords[computerChoice].wins,
+          losses: computerResult === "loss" ? prevRecords[computerChoice].losses + 1 : prevRecords[computerChoice].losses,
+          ties: computerResult === "tie" ? prevRecords[computerChoice].ties + 1 : prevRecords[computerChoice].ties,
+        },
+      };
     });
   };
 
