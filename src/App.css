@@ -1,0 +1,8 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* set height to full viewport height */
+    background-color: rgba(47, 73, 65, 0.336); /* Black background with opacity */
+}

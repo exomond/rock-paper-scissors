@@ -45,3 +45,29 @@ img {
 .win { color: #28a745; }
 .lose { color: #dc3545; }
 .tie { color: #6c757d; }
+
+.choose-button{
+
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #0176ac;
+  color: white;
+  /* font-size: 1.25rem; */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.choose-button:hover {
+  background-color: #014869;
+}
+
+.choose-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 90, 239, 0.4); /* add a blue border when button is focused */
+}
+
