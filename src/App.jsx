@@ -2,12 +2,27 @@ import { useState } from "react";
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-import GamePlay from "./components/GamePlay.jsx";
-
+import GameChoices from "./components/GameChoices.jsx";
+import UserForm from "./components/UserForm.jsx";
 
 function App() {
+  const [userDetails, setUserDetails] = useState(null);
+
+  const onSubmitUserInfo = ({ name, city }) => {
+    setUserDetails({ name, city });
+  };
+
   return (
-	< GamePlay />
+    <div className="App">
+      {!userDetails ? (
+        <UserForm onSubmitUserInfo={onSubmitUserInfo} />
+      ) : (
+        <GameChoices
+          playerName={userDetails.name}
+          playerCity={userDetails.city}
+        />
+      )}
+    </div>
   );
 }
 
