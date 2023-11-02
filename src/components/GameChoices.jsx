@@ -34,13 +34,24 @@ const GameChoices = ({ playerName, playerCity }) => {
 
   // Check for game over condition
   useEffect(() => {
-    if (totalUserWins >= 5) {
-      setGameOver(true);
-      setWinner(`${playerName}`);
-    } else if (totalComputerWins >= 5) {
-      setGameOver(true);
-      setWinner("Computer");
+    const checkGameOver = () => {
+      if (totalUserWins >= 5) {
+        setTimeout(() => {
+          setGameOver(true);
+          setWinner(`${playerName}`);
+        }, 500); // .5 second delay
+      } else if (totalComputerWins >= 5) {
+        setTimeout(() => {
+          setGameOver(true);
+          setWinner("Computer");
+        }, 500); // .5 second delay
+      }
     }
+    checkGameOver();
+    // Clean up the timeout when the component unmounts or the totals change
+    return () => {
+      clearTimeout(checkGameOver);
+    };
   }, [totalUserWins, totalComputerWins, playerName]);
 
   // State to track the player's last choice
