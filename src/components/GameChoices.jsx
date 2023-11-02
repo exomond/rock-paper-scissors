@@ -1,7 +1,9 @@
 
 import ChoiceCard from './ChoiceCard.jsx';
 import './GameChoices.css'; // Make sure to create a corresponding CSS file for styling
-
+import paperImage from '../assets/paper.png'; 
+import rockImage from '../assets/rock.png'; 
+import scissorsImage from '../assets/scissors.png'; 
 const GameChoices = ({ playerName, playerCity }) => {
   // Define gameRecords inside the component
   const gameRecords = {
@@ -13,19 +15,19 @@ const GameChoices = ({ playerName, playerCity }) => {
   return (
     <div className="game-choices-container">
       <ChoiceCard 
-        choice="Rock" 
+        choice={rockImage} 
         playerName={playerName} 
         playerCity={playerCity} 
         record={gameRecords.rock} 
       />
       <ChoiceCard 
-        choice="Paper" 
+        choice= {paperImage} 
         playerName={playerName} 
         playerCity={playerCity} 
         record={gameRecords.paper} 
       />
       <ChoiceCard 
-        choice="Scissors" 
+        choice={scissorsImage} 
         playerName={playerName} 
         playerCity={playerCity} 
         record={gameRecords.scissors} 

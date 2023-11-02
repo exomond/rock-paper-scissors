@@ -1,20 +1,47 @@
+/* ChoiceCard.css */
 .choice-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .choice-card h2 {
-    margin-bottom: 10px;
-  }
-  
-  .player-info p {
-    margin: 5px 0;
-  }
-  
-  .record p {
-    margin: 5px 0;
-  }
-  
+  flex-basis: calc(33.333% - 20px);
+  margin: 10px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.choice-card:hover {
+  transform: translateY(-5px);
+}
+
+.choice-image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
+img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
+.choice-name {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.choice-city {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.game-record {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Record styles */
+.win { color: #28a745; }
+.lose { color: #dc3545; }
+.tie { color: #6c757d; }
