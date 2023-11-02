@@ -59,3 +59,19 @@
 .button:active {
   background-color: #1E40AF;
 }
+
+.play-again-button {
+  padding: 10px 20px;
+  font-size: 1.5em;
+  background-color: #4CAF50; /* Example color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.play-again-button:hover {
+  background-color: #377e3b; /* Darker shade for hover effect */
+}

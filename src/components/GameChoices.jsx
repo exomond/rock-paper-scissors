@@ -5,6 +5,8 @@ import rockImage from "../assets/rock.png";
 import scissorsImage from "../assets/scissors.png";
 import { useState, useEffect } from "react";
 import ResultOverlay from "./ResultOverlay.jsx";
+import App from '../App'
+
 
 const GameChoices = ({ playerName, playerCity }) => {
   // Define gameRecords inside the component
