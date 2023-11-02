@@ -10,7 +10,9 @@ const ChoiceCard = ({
   result,
 }) => {
   // The button click handler
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
+    e.stopPropagation(); // Stop the event from propagating
+    e.preventDefault(); // prevent default browser behavior
     if (onClick) {
       onClick(choiceName);
     }

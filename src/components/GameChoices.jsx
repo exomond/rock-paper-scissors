@@ -5,8 +5,6 @@ import rockImage from "../assets/rock.png";
 import scissorsImage from "../assets/scissors.png";
 import { useState, useEffect } from "react";
 import ResultOverlay from "./ResultOverlay.jsx";
-import App from '../App'
-
 
 const GameChoices = ({ playerName, playerCity }) => {
   // Define gameRecords inside the component
@@ -48,7 +46,7 @@ const GameChoices = ({ playerName, playerCity }) => {
           setWinner("Computer");
         }, 500); // .5 second delay
       }
-    }
+    };
     checkGameOver();
     // Clean up the timeout when the component unmounts or the totals change
     return () => {
@@ -68,6 +66,7 @@ const GameChoices = ({ playerName, playerCity }) => {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
     updateScores(userChoice, computerChoice);
   };
+
   // Function to compare choices and update scores
   const updateScores = (userChoice, computerChoice) => {
     const outcome = {
@@ -77,7 +76,8 @@ const GameChoices = ({ playerName, playerCity }) => {
     };
 
     const userResult = outcome[userChoice][computerChoice];
-    const computerResult = outcome[computerChoice][userChoice]; // This will be the inverse of the userResult
+    const computerResult = outcome[computerChoice][userChoice];
+    // This will be the inverse of the userResult
 
     // Set the last result based on this round
     setLastResult({ user: userResult, computer: computerResult });
@@ -106,6 +106,7 @@ const GameChoices = ({ playerName, playerCity }) => {
         // Normally we wouldn't need to update anything for a tie, but we're including it for completeness
         newRecords[computerChoice].ties += 1;
       }
+
       return newRecords;
     });
   };
@@ -114,7 +115,6 @@ const GameChoices = ({ playerName, playerCity }) => {
   if (gameOver) {
     return <ResultOverlay winner={winner} />;
   }
-
   return (
     <div className="game-choices-container">
       <div className="player-cards">
@@ -125,8 +125,7 @@ const GameChoices = ({ playerName, playerCity }) => {
           playerCity={playerCity}
           record={gameRecords.rock}
           onClick={() => playGame("rock")}
-          result={playerLastChoice === 'rock' ? lastResult.user : ''}
-
+          result={playerLastChoice === "rock" ? lastResult.user : ""}
         />
         <ChoiceCard
           choice={paperImage}
@@ -135,8 +134,7 @@ const GameChoices = ({ playerName, playerCity }) => {
           playerCity={playerCity}
           record={gameRecords.paper}
           onClick={() => playGame("paper")}
-          result={playerLastChoice === 'paper' ? lastResult.user : ''}
-
+          result={playerLastChoice === "paper" ? lastResult.user : ""}
         />
         <ChoiceCard
           choice={scissorsImage}
@@ -145,8 +143,7 @@ const GameChoices = ({ playerName, playerCity }) => {
           playerCity={playerCity}
           record={gameRecords.scissors}
           onClick={() => playGame("scissors")}
-          result={playerLastChoice === 'scissors' ? lastResult.user : ''}
-
+          result={playerLastChoice === "scissors" ? lastResult.user : ""}
         />
       </div>
 
