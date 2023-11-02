@@ -3,4 +3,13 @@
     justify-content: center;
     margin-top: 20px;
   }
+  .game-choices-container {
+    display: flex;
+    flex-direction: column;
+  }
   
+  .player-cards, .computer-cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
