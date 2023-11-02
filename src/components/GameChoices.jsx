@@ -19,6 +19,16 @@ const GameChoices = ({ playerName, playerCity }) => {
     scissors: { wins: 0, losses: 0, ties: 0 },
   };
 
+  // Calculate total wins for the user and computer
+  const totalUserWins = Object.values(gameRecords).reduce(
+    (total, record) => total + record.wins,
+    0
+  );
+  const totalComputerWins = Object.values(computerRecords).reduce(
+    (total, record) => total + record.wins,
+    0
+  );
+
   return (
     <div className="game-choices-container">
       <div className="player-cards">
@@ -41,6 +51,17 @@ const GameChoices = ({ playerName, playerCity }) => {
           record={gameRecords.scissors}
         />
       </div>
+
+      {/* Summary Card */}
+      <div className="summary-card">
+        <div className="user-score">
+          {playerName}'s Total Wins: {totalUserWins}
+        </div>
+        <div className="computer-score">
+          Computer's Total Wins: {totalComputerWins}
+        </div>
+      </div>
+
       <div className="computer-cards">
         <ChoiceCard
           choice={rockImage}
