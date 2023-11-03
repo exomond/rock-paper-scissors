@@ -8,6 +8,7 @@ const ChoiceCard = ({
   record,
   onClick,
   result,
+  isComputerChoice, // Add this new prop
 }) => {
   // The button click handler
   const handleButtonClick = (e) => {
@@ -27,13 +28,23 @@ const ChoiceCard = ({
   } else {
     boxShadowColor = "none"; // Default, no box-shadow
   }
+
+  // Additional style for highlighting computer's choice
+  const computerChoiceStyle = {
+    border: isComputerChoice ? "3px solid #f39c12" : "", // Highlight with a border
+    transform: isComputerChoice ? "scale(1.1)" : "", // Scale up the card a bit
+    transition: "transform 0.3s ease", // Smooth transition for scaling effect
+  };
   // Apply dynamic styles to the card
   const cardStyle = {
-    boxShadow: boxShadowColor
+    boxShadow: boxShadowColor,
+    ...computerChoiceStyle, // Spread the computerChoiceStyle here
+
     // ... other styles if necessary
   };
+
   return (
-    <div className="choice-card" style={cardStyle}>
+    <div className={`choice-card ${isComputerChoice ? 'computer-choice' : ''}`} style={cardStyle}>
       <div className="choice-image">
         <img src={choice} alt={choiceName} />{" "}
         {/* alt should be dynamic based on choiceName */}

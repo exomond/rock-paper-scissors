@@ -21,6 +21,9 @@ const GameChoices = ({ playerName, playerCity }) => {
 
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
+   // State to track the computer's last choice
+   const [computerLastChoice, setComputerLastChoice] = useState(null);
+
 
   // Calculate total wins for the user and computer
   const totalUserWins = Object.values(gameRecords).reduce(
@@ -64,6 +67,7 @@ const GameChoices = ({ playerName, playerCity }) => {
     setPlayerLastChoice(userChoice); // Update the last choice
     const choices = ["rock", "paper", "scissors"];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    setComputerLastChoice(computerChoice); // Add this line to update computer's last choice
     updateScores(userChoice, computerChoice);
 }, []); // Dependencies array is empty if no props or state are used
 
@@ -161,18 +165,21 @@ const GameChoices = ({ playerName, playerCity }) => {
           playerName="Computer"
           playerCity="Tech"
           record={computerRecords.rock}
+          isComputerChoice={computerLastChoice === "rock"} // Add this line
         />
         <ChoiceCard
           choice={paperImage}
           playerName="Computer"
           playerCity="Tech"
           record={computerRecords.paper}
+          isComputerChoice={computerLastChoice === "paper"} // Add this line
         />
         <ChoiceCard
           choice={scissorsImage}
           playerName="Computer"
           playerCity="Tech"
           record={computerRecords.scissors}
+          isComputerChoice={computerLastChoice === "scissors"} // Add this line
         />
       </div>
     </div>
