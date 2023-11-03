@@ -12,6 +12,10 @@ const UserForm = ({ onSubmitUserInfo }) => {
 
   return (
     <div className="form-container">
+      <header className="welcome-header">
+        <h1>Ready to Challenge Yourself?</h1>
+        <p>Claim your destiny in the showdown!</p>
+      </header>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
